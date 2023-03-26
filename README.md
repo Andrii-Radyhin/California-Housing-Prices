@@ -114,6 +114,8 @@ model's performance, we can develop more informed and effective strategies for f
 
 ## Results
 
+Models before and After Grid Search:
+
 | Model | R2 Before |  MSE Before |  RMSE Before | R2 After |  MSE After | RMSE After |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | Desision Tree | 0.599 | 0.531 | 0.729 | 0.618 | 0.506 | 0.711 |
