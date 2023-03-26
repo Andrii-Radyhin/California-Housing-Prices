@@ -114,7 +114,7 @@ model's performance, we can develop more informed and effective strategies for f
 
 ## Results
 
-Models before and After Grid Search:
+Models before and after Grid Search:
 
 | Model | R2 Before |  MSE Before |  RMSE Before | R2 After |  MSE After | RMSE After |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
