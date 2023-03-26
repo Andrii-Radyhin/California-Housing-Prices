@@ -24,11 +24,11 @@ Let’s have an overview of the entire dataset.
 
 "IMAGE with MedHouseVal"
 
-As written in the description, the dataset contains aggregated data regarding each district in California. Let’s have a close look at the features that can be used by a predictive model. (SYNONYMS)
+As delineated in the description, the dataset comprises compiled information regarding every region in California. Let us closely scrutinize the characteristics that can be utilized by a predictive model.
 
 "IMAGE without MedHouseVal"
 
-In this dataset, we have information regarding the demography (income, population, house occupancy) in the districts, the location of the districts (latitude, longitude), and general information regarding the house in the districts (number of rooms, number of bedrooms, age of the house). Since these statistics are at the granularity of the district, they corresponds to averages or medians. (SYNONYMS)
+In this dataset, we have information regarding the demography (income, population, house occupancy) in the districts, the location of the districts (latitude, longitude), and general information regarding the house in the districts (number of rooms, number of bedrooms, age of the house). Since these statistics are at the granularity of the district, they corresponds to averages or medians.
 
 We can now check more into details the data types and if the dataset contains any missing value.
 
@@ -46,15 +46,15 @@ Let’s have a quick look at the distribution of these features by plotting thei
 
 "IMAGE HISTOGRAMS"
 
-(SYNONYMS)We can first focus on features for which their distributions would be more or less expected.
+We can begin by directing our attention towards those features whose distributions are likely to conform to our expectations.
 
-The median income is a distribution with a long tail. It means that the salary of people is more or less normally distributed but there is some people getting a high salary.
+The distribution of median income exhibits a long tail, indicating that the earnings of individuals are distributed in a manner that resembles a normal distribution, albeit with a subset of individuals earning relatively high salaries.
 
-Regarding the average house age, the distribution is more or less uniform.
+The distribution of the average age of houses appears to be relatively homogeneous.
 
 The target distribution has a long tail as well. In addition, we have a threshold-effect for high-valued houses: all houses with a price above 5 are given the value 5.
 
-Focusing on the average rooms, average bedrooms, average occupation, and population, the range of the data is large with unnoticeable bin for the largest values. It means that there are very high and few values (maybe they could be considered as outliers?). We can see this specificity looking at the statistics for these features: (SYNONYMS)
+When examining the statistics for average rooms, average bedrooms, average occupation, and population, it becomes apparent that the dataset has a wide range of values, with a negligible bin for the largest values. This indicates the presence of a small number of exceptionally high values, which could potentially be deemed as outliers. We can see this specificity looking at the statistics for these features:
 
 "IMAGE FRAME WITH STATISTICS"
 
@@ -88,105 +88,30 @@ We will try several regressors available in sklearn such as:
     - Random forests
     - Gradient boosting
 
-Firstly we will preprocess our data for Linear, Ridge and LASSO. We can do it in such ways as Normalization and Scaling. (DIFFERENCE BETWEEN) Other three do not require any preprocess because tree-based algorithms are not sensitive to the scale of the features because they split the data based on individual features, and the algorithm's results are based on the relative values of the features rather than their absolute values. 
+The preprocessing stage involved scaling and normalization of the data for Linear, Ridge, and LASSO models. This was necessary as these models are sensitive to the scale of the features, and failure to preprocess the data may lead to suboptimal results. On the other hand, the tree-based algorithms used in Random Forests, Decision Trees, and Gradient Boosting Regressor are not affected by the scale of the features, and therefore, no preprocessing was required.
 
-As a result, scaling or normalization of the data is not necessary for these algorithms.
+The performance metrics used to evaluate the models were R2 Score, Mean Squared Error (MSE), and Root Mean Squared Error (RMSE). These metrics were chosen as they provide an accurate measure of the model's ability to predict the target variable. To ensure that the models' performance was not due to chance, each model underwent fine-tuning through hyperparameter Grid Search. This involved testing different combinations of hyperparameters to identify the optimal combination that yields the best possible results.
 
-R2 Score, MSE and RMSE our metrics. We will evaluate models by them. Also every model will be fine-tuned (hyperparameters GridSearch) to see best results and weed out luck. Closer look to GridSeach, what parameters were fine-tuned, in experiments.ipynb.
+The hyperparameter Grid Search process was thoroughly examined in the experiments.ipynb file to gain a deeper understanding of the factors that influence model performance. This was done to enable the development of more accurate and effective predictive models. By understanding the impact of each hyperparameter on the model's performance, we can develop more informed and effective strategies for fine-tuning models in the future.
 
-Here i provide results before fine-tuning:
+## Results
 
-TABLE
-
-Desision Tree:
-
-(Before)
-R2 :  0.5992174715251078 
-MSE:  0.5318101099611434 
-RMSE:  0.7292531178960727
-
-(After)
-R2 :  0.6183213705485122 
-MSE:  0.506460585172765 
-RMSE:  0.7116604423267918
-
-Random Forests:
-
-(Before)
-R2 :  0.81276815811356 
-MSE:  0.24844343090692636 
-RMSE:  0.4984410004272585
-
-(After)
-R2 :  0.8177681114209377 
-MSE:  0.2418088459904739 
-RMSE:  0.49174062877748254
-
-Linear Regression (original): 
-
-(Before)
-R2 :  0.5539755298960758 
-MSE:  0.5918429712840851 
-RMSE:  0.7693133115214407
-
-(After)
-R2 :  0.6074054352929974 
-MSE:  0.5209452603172996 
-RMSE:  0.7217653776105498
-
-LASSO (original):
-
-(Before)
-R2 :  0.4805376816931025 
-MSE:  0.6892898092905969 
-RMSE:  0.8302347916647416
-
-(After)
-R2 :  0.510383190381585 
-MSE:  0.6496869271044228 
-RMSE:  0.8060315918774045
-
-Ridge:
-
-(Before)
-R2 :  0.5539714944671493 
-MSE:  0.5918483260132679 
-RMSE:  0.7693167917140947
-
-(After)
-R2 :  0.6074043035287395 
-MSE:  0.5209467620885389 
-RMSE:  0.7217664179556561
-
-GradientBoostingRegressor:
-
-(Before)
-R2:  0.7907863627375509 
-MSE:  0.2776117209033578 
-RMSE:  0.5268887177605512 
-
-(After)
-R2:  0.8436412311966435 
-MSE:  0.2074770433410031 
-RMSE:  0.4554964800533623 
+| Model | R2 Before |  MSE Before |  RMSE Before | R2 After |  MSE After | RMSE After |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| Desision Tree | 0.599 | 0.531 | 0.729 | 0.618 | 0.506 | 0.711 |
+| Random Forests | 0.812 | 0.248 | 0.498 | 0.817 | 0.241 | 0.491 |
+| Linear Regression | 0.553 | 0.591 | 0.769 | 0.607 | 0.520 | 0.721 |
+| LASSO | 0.480 | 0.689 | 0.830 | 0.510 | 0.649 | 0.806 |
+| Ridge | 0.553 | 0.591 | 0.769 | 0.607 | 0.520 | 0.721 |
+| Gradient Boosting | 0.790 | 0.277 | 0.526 | 0.843 | 0.207 | 0.455 |
  
- 
-Standartization:
+With applied standartization:
 
-Linear:
-R2 :  0.6074054352929976 
-MSE:  0.5209452603172995 
-RMSE:  0.7217653776105497
-
-LASSO:
-R2:  0.4392929149966498 
-MSE:  0.5587612437422472 
-RMSE:  0.7475033402883543
-
-Ridge:
-R2 :  0.6048561892912513 
-MSE:  0.5243279297207429 
-RMSE:  0.7241049162384847
+| Model | R2 |  MSE |  RMSE |
+| ------ | ------ | ------ | ------ |
+| Linear Regression | 0.607 | 0.520 | 0.721 |
+| LASSO | 0.439 | 0.558 | 0.747 |
+| Ridge | 0.604 | 0.524 | 0.724 |
 
 
 "IMAGE RESULTS"
@@ -205,6 +130,11 @@ To compare our top-2 model Random Forests:
 
 We can see that the feature importances of the gradient boosted trees are similar to the feature importances of the random forests, it gives weight to all of the features in this case.
 
+Gradient boosting cross validation scores (KFold(n_splits=10...)) with neg_mean_squared_error metrics from sklearn:
+- 0.21325311, 0.22295834, 0.21388219, 0.2171086 , 0.22110809, 0.22049503, 0.21087374, 0.19515259, 0.2248454 , 0.18383489
+
+Average:
+- 0.46081579456222455
 
 Let's also visualize predictions:
 "IMAGE"
